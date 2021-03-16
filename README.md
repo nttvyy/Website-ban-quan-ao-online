@@ -1,11 +1,10 @@
 # Website bán quần áo online
 ## Danh sách thành viên
 <ul>
-<li>Nguyễn Thị Thảo Vy - 18DH110887</li>
-<li>Nguyễn Hồ Minh Huy - 18DH110932</li>
-<li>Huỳnh Thị Kim Tiền - 18DH110190</li>
+    <li>Nguyễn Thị Thảo Vy - 18DH110887</li>
+    <li>Nguyễn Hồ Minh Huy - 18DH110932</li>
+    <li>Huỳnh Thị Kim Tiền - 18DH110190</li>
 </ul>
-
 ## Mô tả đề tài: 
 <ul>
     <li> Gồm những chức năng sau:
