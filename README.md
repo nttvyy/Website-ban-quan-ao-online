@@ -1,9 +1,9 @@
 # Website bán quần áo online
 ## Danh sách thành viên
-* 1. Nguyễn Thị Thảo Vy - 18DH110887
-* 2. Nguyễn Hồ Minh Huy - 18DH110932
-* 3. Huỳnh Thị Kim Tiền - 18DH110190
-# Mô tả đề tài: 
+* Nguyễn Thị Thảo Vy - 18DH110887
+* Nguyễn Hồ Minh Huy - 18DH110932
+* Huỳnh Thị Kim Tiền - 18DH110190
+## Mô tả đề tài: 
 <ul>
     <li> Gồm những chức năng sau:
         <ul>
