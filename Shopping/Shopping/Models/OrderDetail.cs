@@ -14,9 +14,13 @@ namespace Shopping.Models
     
     public partial class OrderDetail
     {
-        public long ProductID { get; set; }
-        public long OrderID { get; set; }
+        public int ID_OrderDetail { get; set; }
+        public Nullable<int> OrderID { get; set; }
+        public Nullable<int> ProductID { get; set; }
         public Nullable<int> Quantity { get; set; }
-        public Nullable<decimal> Price { get; set; }
+        public Nullable<double> Price { get; set; }
+    
+        public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

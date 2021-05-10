@@ -16,24 +16,29 @@ namespace Shopping.Models
 
     public partial class Product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            Image = "~/Contents/images/add.jpg";
             this.OrderDetails = new HashSet<OrderDetail>();
         }
-
-        public long ID { get; set; }
-        public string Name { get; set; }
+    
+        public int ProductID { get; set; }
+        public Nullable<int> CategoryID { get; set; }
+        public string ProductName { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
-        public Nullable<decimal> Price { get; set; }
-        public Nullable<bool> IncludedVAT { get; set; }
-        public int Quantity { get; set; }
-        public Nullable<long> CategoryID { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<double> Price { get; set; }
+        public Nullable<int> TotalQuantity { get; set; }
         public string CreatedBy { get; set; }
-        public string MetaKeywords { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<int> ID_Material { get; set; }
+        public Nullable<int> IDSize { get; set; }
+    
+        public virtual Material1 Material1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ProductCategory ProductCategory { get; set; }
+        public virtual Size Size { get; set; }
         [NotMapped]
         public HttpPostedFileBase ImageUpload { get; set; }
     }

@@ -1,0 +1,40 @@
+﻿@model Shopping.Models.Size
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn có chắc chắn muốn xóa điều này?</h3>
+<div>
+    <h4>Kích cỡ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã kích cỡ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDSize)
+        </dd>
+        <dt>
+            Tên kích cỡ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_Size)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

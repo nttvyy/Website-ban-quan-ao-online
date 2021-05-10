@@ -1,0 +1,33 @@
+﻿@model Shopping.Models.Size
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Kích cỡ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã kích cỡ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDSize)
+        </dd>
+        <dt>
+            Tên kích cỡ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_Size)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDSize }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

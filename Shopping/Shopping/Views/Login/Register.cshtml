@@ -1,11 +1,10 @@
-﻿@model Shopping.Models.User1
+﻿@model Shopping.Models.RegisterModel
 
 
 @{
     ViewBag.Title = "Đăng ký";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Register</h2>
 
 @using (Html.BeginForm("RegisterUser", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))

@@ -1,5 +1,0 @@
-﻿@model Shopping.Models.ProductCategory
-
-@Html.DropDownListFor(model => model.ID,
-    new SelectList(Model.ListCate.OrderBy(model => model.Name), "ID", "Name"), "---Select cate---")
-

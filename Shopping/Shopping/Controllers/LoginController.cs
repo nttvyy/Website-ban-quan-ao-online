@@ -10,7 +10,7 @@ namespace Shopping.Controllers
 {
     public class LoginController : Controller
     {
-        QuanAoOnlineEntities db = new QuanAoOnlineEntities();
+        QAShopEntities db = new QAShopEntities();
        
 
         // GET: Login
@@ -20,9 +20,9 @@ namespace Shopping.Controllers
         }
         [HttpPost]
 
-        public ActionResult Login(User1 a)
+        public ActionResult Login(User a)
         {
-            var check = db.User1.Where(s => s.ID == a.ID && s.Password == a.Password && s.Email==a.Email).FirstOrDefault();
+            var check = db.Users.Where(s => s.UserID == a.UserID && s.Password == a.Password && s.Email==a.Email).FirstOrDefault();
             if (check == null)
             {
                 ViewBag.ErrorInfo = "Sai info";
@@ -31,7 +31,7 @@ namespace Shopping.Controllers
             else
             {
                 db.Configuration.ValidateOnSaveEnabled = false;
-                Session["ID"] = a.ID;
+                Session["UserID"] = a.UserID;
                 Session["Password"] = a.Password;
                 return RedirectToAction("Index", "Product");
             }
@@ -51,8 +51,8 @@ namespace Shopping.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dao = new User1();
-                var check = db.User1.Where(s => s.ID == dao.ID).FirstOrDefault();
+                var dao = new User();
+                var check = db.Users.Where(s => s.UserID == dao.UserID).FirstOrDefault();
                 if (check == null)
                 {
                     db.Configuration.ValidateOnSaveEnabled = false;
@@ -60,11 +60,11 @@ namespace Shopping.Controllers
                     return RedirectToAction("Index");
                     if (!string.IsNullOrEmpty(re.ProvinceID))
                     {
-                        dao.ProvinceID = int.Parse(re.ProvinceID);
+                        dao.Province = int.Parse(re.ProvinceID);
                     }
                     if (!string.IsNullOrEmpty(re.DistrictID))
                     {
-                        dao.DistrictID = int.Parse(re.DistrictID);
+                        dao.District = int.Parse(re.DistrictID);
                     }
                     var result = Insert(dao);
                     if (result > 0)
@@ -85,11 +85,11 @@ namespace Shopping.Controllers
             }
             return View();
         }
-        public long Insert(User1 entity)
+        public long Insert(User entity)
         {
-            db.User1.Add(entity);
+            db.Users.Add(entity);
             db.SaveChanges();
-            return entity.ID;
+            return entity.UserID;
         }
         public JsonResult LoadProvince()
         {

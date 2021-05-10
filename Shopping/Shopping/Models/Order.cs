@@ -14,13 +14,23 @@ namespace Shopping.Models
     
     public partial class Order
     {
-        public long ID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Order()
+        {
+            this.OrderDetails = new HashSet<OrderDetail>();
+        }
+    
+        public int OrderID { get; set; }
+        public Nullable<int> UserID { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
-        public Nullable<long> CustomerID { get; set; }
         public string ShipName { get; set; }
-        public string ShipMobile { get; set; }
+        public Nullable<int> ShipPhone { get; set; }
         public string ShipAddress { get; set; }
         public string ShipEmail { get; set; }
         public Nullable<int> Status { get; set; }
+    
+        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }
