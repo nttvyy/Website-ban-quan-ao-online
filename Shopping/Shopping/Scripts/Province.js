@@ -1,4 +1,5 @@
-﻿var user = {
+﻿/// <reference path="jquery.unobtrusive-ajax.min.js" />
+var user = {
     init: function () {
 
         user.loadProvince();

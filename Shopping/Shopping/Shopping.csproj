@@ -156,8 +156,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administrator\AdministratorAreaRegistration.cs" />
     <Compile Include="Areas\Administrator\Controllers\ChatLieuController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\CustomeController.cs" />
     <Compile Include="Areas\Administrator\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\HomePageController.cs" />
     <Compile Include="Areas\Administrator\Controllers\KichCoController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\OderDetailController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\OrderController.cs" />
     <Compile Include="Areas\Administrator\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Administrator\Controllers\TheLoaiController.cs" />
     <Compile Include="Areas\Administrator\Controllers\TinTucController.cs" />
@@ -168,87 +172,72 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Contact.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ContentTag.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\CustomRoleProvider.cs" />
     <Compile Include="Models\DistrictModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Material1.cs">
-      <DependentUpon>Model5.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model4.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model4.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model4.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model4.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model4.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model4.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model5.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model5.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model5.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model5.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model5.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model5.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\New.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
+      <DependentUpon>QUANAO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\News.cs">
-      <DependentUpon>Model5.tt</DependentUpon>
+      <DependentUpon>QUANAO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Order.cs">
-      <DependentUpon>Model5.tt</DependentUpon>
+      <DependentUpon>QUANAO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderDetail.cs">
-      <DependentUpon>Model5.tt</DependentUpon>
+      <DependentUpon>QUANAO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>Model5.tt</DependentUpon>
+      <DependentUpon>QUANAO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductCategory.cs">
-      <DependentUpon>Model5.tt</DependentUpon>
+      <DependentUpon>QUANAO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProvinceModel.cs" />
+    <Compile Include="Models\QAOnline.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QAOnline.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QAOnline.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QAOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QAOnline.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QAOnline.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QUANAO.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QUANAO.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QUANAO.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QUANAO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QUANAO.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QUANAO.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quyen.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\Role.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
+      <DependentUpon>QUANAO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Size.cs">
-      <DependentUpon>Model5.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Slide.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>Model5.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Tag.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
+      <DependentUpon>QUANAO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>Model5.tt</DependentUpon>
+      <DependentUpon>QUANAO.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\User1.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\UserDao.cs" />
+    <Compile Include="Models\UserLogin.cs" />
+    <Compile Include="Models\UserRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -7061,25 +7050,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model4.Context.tt">
+    <Content Include="Models\QAOnline.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model4.edmx</DependentUpon>
-      <LastGenOutput>Model4.Context.cs</LastGenOutput>
+      <DependentUpon>QAOnline.edmx</DependentUpon>
+      <LastGenOutput>QAOnline.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model4.tt">
+    <Content Include="Models\QAOnline.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model4.edmx</DependentUpon>
-      <LastGenOutput>Model4.cs</LastGenOutput>
+      <DependentUpon>QAOnline.edmx</DependentUpon>
+      <LastGenOutput>QAOnline.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model5.Context.tt">
+    <Content Include="Models\QUANAO.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model5.edmx</DependentUpon>
-      <LastGenOutput>Model5.Context.cs</LastGenOutput>
+      <DependentUpon>QUANAO.edmx</DependentUpon>
+      <LastGenOutput>QUANAO.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model5.tt">
+    <Content Include="Models\QUANAO.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model5.edmx</DependentUpon>
-      <LastGenOutput>Model5.cs</LastGenOutput>
+      <DependentUpon>QUANAO.edmx</DependentUpon>
+      <LastGenOutput>QUANAO.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -7327,20 +7316,6 @@
     <Content Include="Content\dist\css\adminlte.min.css.map" />
     <Content Include="Content\dist\img\.DS_Store" />
     <Content Include="Content\dist\js\.DS_Store" />
-    <EntityDeploy Include="Models\Model4.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model4.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model4.edmx.diagram">
-      <DependentUpon>Model4.edmx</DependentUpon>
-    </Content>
-    <EntityDeploy Include="Models\Model5.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model5.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model5.edmx.diagram">
-      <DependentUpon>Model5.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Administrator\Content\vendors\animate.css\.bower.json" />
     <Content Include="Areas\Administrator\Content\vendors\animate.css\animate-config.json" />
     <Content Include="Areas\Administrator\Content\vendors\animate.css\bower.json" />
@@ -8237,9 +8212,6 @@
     <Content Include="Areas\Administrator\Views\ChatLieu\Details.cshtml" />
     <Content Include="Areas\Administrator\Views\ChatLieu\Edit.cshtml" />
     <Content Include="Areas\Administrator\Views\ChatLieu\Index.cshtml" />
-    <Content Include="Areas\Administrator\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Administrator\Views\Home\Login.cshtml" />
-    <Content Include="Areas\Administrator\Views\Home\Register.cshtml" />
     <Content Include="Areas\Administrator\Views\KichCo\Create.cshtml" />
     <Content Include="Areas\Administrator\Views\KichCo\Delete.cshtml" />
     <Content Include="Areas\Administrator\Views\KichCo\Details.cshtml" />
@@ -8247,8 +8219,6 @@
     <Content Include="Areas\Administrator\Views\KichCo\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\SanPham\Create.cshtml" />
     <Content Include="Areas\Administrator\Views\SanPham\Delete.cshtml" />
-    <Content Include="Areas\Administrator\Views\SanPham\Details.cshtml" />
-    <Content Include="Areas\Administrator\Views\SanPham\Edit.cshtml" />
     <Content Include="Areas\Administrator\Views\SanPham\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administrator\Views\TheLoai\Create.cshtml" />
@@ -8265,6 +8235,39 @@
     <Content Include="Areas\Administrator\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administrator\Views\TinTuc\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\TinTuc\Create.cshtml" />
+    <EntityDeploy Include="Models\QAOnline.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QAOnline.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\QAOnline.edmx.diagram">
+      <DependentUpon>QAOnline.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\QUANAO.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QUANAO.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\QUANAO.edmx.diagram">
+      <DependentUpon>QUANAO.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Administrator\Views\Shared\P_Layout.cshtml" />
+    <Content Include="Areas\Administrator\Views\HomePage\Login.cshtml" />
+    <Content Include="Areas\Administrator\Views\HomePage\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\Order\Create.cshtml" />
+    <Content Include="Areas\Administrator\Views\SanPham\Details.cshtml" />
+    <Content Include="Areas\Administrator\Views\Custome\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\SanPham\Edit.cshtml" />
+    <Content Include="Areas\Administrator\Views\Custome\Create.cshtml" />
+    <Content Include="Areas\Administrator\Views\Custome\Edit.cshtml" />
+    <Content Include="Areas\Administrator\Views\Custome\Delete.cshtml" />
+    <Content Include="Areas\Administrator\Views\OderDetail\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\TinTuc\Details.cshtml" />
+    <Content Include="Areas\Administrator\Views\TinTuc\Delete.cshtml" />
+    <Content Include="Areas\Administrator\Views\Order\Delete.cshtml" />
+    <Content Include="Areas\Administrator\Views\OderDetail\Create.cshtml" />
+    <Content Include="Areas\Administrator\Views\OderDetail\Details.cshtml" />
+    <Content Include="Areas\Administrator\Views\OderDetail\Delete.cshtml" />
+    <Content Include="Areas\Administrator\Views\HomePage\Logout.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -8303,6 +8306,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrator\Models\" />
+    <Folder Include="Areas\Administrator\Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Shopping.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Quản lý chi tiết đơn hàng</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ID_OrderDetail)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Order.User.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Discount)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ID_OrderDetail)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Order.User.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Discount)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.ID_OrderDetail }) |*@
+            @Html.ActionLink("Details", "Details", new { id=item.ID_OrderDetail }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_OrderDetail})
+        </td>
+    </tr>
+}
+
+</table>

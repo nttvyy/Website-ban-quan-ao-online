@@ -13,7 +13,7 @@ namespace Shopping.Areas.Administrator.Controllers
 {
     public class TheLoaiController : Controller
     {
-        private QAShopEntities db = new QAShopEntities();
+        private QAShop1Entities1 db = new QAShop1Entities1();
 
         // GET: Administrator/TheLoai
         public ActionResult Index()
@@ -22,9 +22,9 @@ namespace Shopping.Areas.Administrator.Controllers
         }
 
         // GET: Administrator/TheLoai/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -60,9 +60,9 @@ namespace Shopping.Areas.Administrator.Controllers
         }
 
         // GET: Administrator/TheLoai/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -91,9 +91,9 @@ namespace Shopping.Areas.Administrator.Controllers
         }
 
         // GET: Administrator/TheLoai/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -108,7 +108,7 @@ namespace Shopping.Areas.Administrator.Controllers
         // POST: Administrator/TheLoai/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             ProductCategory theLoai = db.ProductCategories.Find(id);
             db.ProductCategories.Remove(theLoai);

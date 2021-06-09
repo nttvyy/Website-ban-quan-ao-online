@@ -21,7 +21,7 @@ namespace Shopping.Models
         }
     
         public int IDSize { get; set; }
-        public string Name_Size { get; set; }
+        public string NameSize { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }

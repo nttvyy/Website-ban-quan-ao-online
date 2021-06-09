@@ -1,4 +1,4 @@
-﻿@model Shopping.Models.User1
+﻿@model Shopping.Models.LoginModel
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,32 +32,32 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                      @using (Html.BeginForm("Login", "Login", FormMethod.Post))
-                      {
-                          @Html.ValidationSummary(false, "",new { @class="text-danger"});
-                        <fieldset>
-                            <div class="form-group">
-                                <label>Email </label>
-                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @autofocus = "autofocus" })
-                            </div>
-                            <div class="form-group">
-                                <label>User Name</label>
-                                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @autofocus = "autofocus" })
-                            </div>
+                        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                        {
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" });
+                            <fieldset>
+                                <div class="form-group">
+                                    <label>Email </label>
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @autofocus = "autofocus" })
+                                </div>
+                                <div class="form-group">
+                                    <label>User Name</label>
+                                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @autofocus = "autofocus" })
+                                </div>
 
-                            <div class="form-group">
-                                <label>Pass Word</label>
-                                @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
-                            </div>
+                                <div class="form-group">
+                                    <label>Pass Word</label>
+                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                                </div>
 
-                            <div>
-                                @Html.ActionLink("Register", "Register")
-                            </div>
+                                <div>
+                                    @Html.ActionLink("Register", "Register")
+                                </div>
 
-                            <!-- Change this to a button or input when using this as a form -->
-                            <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
-                        </fieldset>
-                      }
+                                <!-- Change this to a button or input when using this as a form -->
+                                <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
+                            </fieldset>
+                        }
                     </div>
                 </div>
             </div>

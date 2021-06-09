@@ -11,15 +11,19 @@ namespace Shopping.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Role
     {
-
-        [Display(Name = "ID Rolde")]
-        public string ID { get; set; }
-
-        [Display(Name = "Vi tri")]
-        public string Name { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Role()
+        {
+            this.Users = new HashSet<User>();
+        }
+    
+        public int ID_Role { get; set; }
+        public string RoleName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace Shopping.Areas.Administrator.Controllers
 {
     public class SanPhamController : Controller
     {
-        private QAShopEntities db = new QAShopEntities();
+        private QAShop1Entities1 db = new QAShop1Entities1();
 
         // GET: Administrator/SanPham
         public ActionResult Index()
@@ -23,9 +23,9 @@ namespace Shopping.Areas.Administrator.Controllers
         }
 
         // GET: Administrator/SanPham/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -42,8 +42,8 @@ namespace Shopping.Areas.Administrator.Controllers
         {
             Product p = new Product();
             ViewBag.ID_Material = new SelectList(db.Material1, "ID_Material", "Name");
-            ViewBag.IDSize = new SelectList(db.Sizes, "IDSize", "Name_Size");
-            
+            ViewBag.IDSize = new SelectList(db.Sizes, "IDSize", "NameSize");
+
             ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "NameCategory");
             return View(p);
         }
@@ -81,16 +81,16 @@ namespace Shopping.Areas.Administrator.Controllers
 
             ViewBag.ID_Material = new SelectList(db.Material1, "ID_Material", "Name", sanPham.ID_Material);
             //ViewBag.MaDoiTuong = new SelectList(db.DoiTuongs, "MaDoiTuong", "TenDoiTuong", sanPham.MaDoiTuong);
-            ViewBag.IDSize = new SelectList(db.Sizes, "IDSize", "Name Size", sanPham.IDSize);
+            ViewBag.IDSize = new SelectList(db.Sizes, "IDSize", "NameSize", sanPham.IDSize);
             // ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat", sanPham.MaNhaSanXuat);
             ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "NameCategory", sanPham.CategoryID);
             return View(sanPham);
         }
 
         // GET: Administrator/SanPham/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -101,8 +101,8 @@ namespace Shopping.Areas.Administrator.Controllers
             }
             ViewBag.ID_Material = new SelectList(db.Material1, "ID_Material", "Name", sanPham.ID_Material);
             //ViewBag.MaDoiTuong = new SelectList(db.DoiTuongs, "MaDoiTuong", "TenDoiTuong", sanPham.MaDoiTuong);
-            ViewBag.IDSize = new SelectList(db.Sizes, "IDSize", "Name Size", sanPham.IDSize);
-           // ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat", sanPham.MaNhaSanXuat);
+            ViewBag.IDSize = new SelectList(db.Sizes, "IDSize", "NameSize", sanPham.IDSize);
+            // ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat", sanPham.MaNhaSanXuat);
             ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "NameCategory", sanPham.CategoryID);
             return View(sanPham);
         }
@@ -122,16 +122,16 @@ namespace Shopping.Areas.Administrator.Controllers
             }
             ViewBag.ID_Material = new SelectList(db.Material1, "ID_Material", "Name", sanPham.ID_Material);
             //ViewBag.MaDoiTuong = new SelectList(db.DoiTuongs, "MaDoiTuong", "TenDoiTuong", sanPham.MaDoiTuong);
-            ViewBag.IDSize = new SelectList(db.Sizes, "IDSize", "Name Size", sanPham.IDSize);
+            ViewBag.IDSize = new SelectList(db.Sizes, "IDSize", "NameSize", sanPham.IDSize);
             // ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat", sanPham.MaNhaSanXuat);
             ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "NameCategory", sanPham.CategoryID);
             return View(sanPham);
         }
 
         // GET: Administrator/SanPham/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -146,7 +146,7 @@ namespace Shopping.Areas.Administrator.Controllers
         // POST: Administrator/SanPham/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Product sanPham = db.Products.Find(id);
             db.Products.Remove(sanPham);

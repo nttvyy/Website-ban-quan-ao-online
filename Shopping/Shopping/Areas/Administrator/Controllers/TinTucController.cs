@@ -7,12 +7,13 @@ using Shopping.Models;
 using System.IO;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net;
 
 namespace Shopping.Areas.Administrator.Controllers
 {
     public class TinTucController : Controller
     {
-        QAShopEntities db = new QAShopEntities();
+        QAShop1Entities1 db = new QAShop1Entities1();
         // GET: Content
         public ActionResult Index()
         {
@@ -32,13 +33,23 @@ namespace Shopping.Areas.Administrator.Controllers
         }
 
         // GET: Content/Create
+        //[Authorize(Roles = "Manager")]
         public ActionResult Create()
         {
-            News con = new News();
-            return View();
+            var role = Session["roleid"];
+            if (role.ToString() != "1")
+            {
+                return Content("Bạn ko có quyền đăng nhập ");
+            }
+            else
+            {
+                News con = new News();
+                return View();
+            }
         }
 
         // POST: Content/Create
+       // [Authorize(Roles = "Manager")]
         [HttpPost]
         public ActionResult Create(News con)
         {
@@ -66,6 +77,7 @@ namespace Shopping.Areas.Administrator.Controllers
         }
 
         // GET: Content/Edit/5
+       //[Authorize(Roles = "Manager")]
         public ActionResult Edit(int id)
         {
             return View();
@@ -73,6 +85,7 @@ namespace Shopping.Areas.Administrator.Controllers
 
         // POST: Content/Edit/5
         [HttpPost]
+       // [Authorize(Roles = "Manager")]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
@@ -88,25 +101,47 @@ namespace Shopping.Areas.Administrator.Controllers
         }
 
         // GET: Content/Delete/5
+        // [Authorize(Roles = "Manager")]
         public ActionResult Delete(int id)
         {
-            return View();
+            var role = Session["roleid"];
+            if (role.ToString() != "1")
+            {
+                return Content("Bạn ko có quyền đăng nhập ");
+            }
+            else
+            {
+                if (id == 0)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                News s = db.News.Find(id);
+                if (s == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(s);
+            }
         }
 
-        // POST: Content/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        // POST: Administrator/ChatLieu/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            News s = db.News.Find(id);
+            db.News.Remove(s);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-                return RedirectToAction("Index");
-            }
-            catch
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                return View();
+                db.Dispose();
             }
+            base.Dispose(disposing);
         }
     }
 }

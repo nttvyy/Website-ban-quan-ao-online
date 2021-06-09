@@ -12,7 +12,7 @@ namespace Shopping.Areas.Administrator.Controllers
 {
     public class ChatLieuController : Controller
     {
-        private QAShopEntities db = new QAShopEntities();
+        private QAShop1Entities1 db = new QAShop1Entities1();
 
         // GET: Administrator/ChatLieu
         public ActionResult Index()
@@ -21,9 +21,9 @@ namespace Shopping.Areas.Administrator.Controllers
         }
 
         // GET: Administrator/ChatLieu/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -59,9 +59,9 @@ namespace Shopping.Areas.Administrator.Controllers
         }
 
         // GET: Administrator/ChatLieu/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -90,9 +90,9 @@ namespace Shopping.Areas.Administrator.Controllers
         }
 
         // GET: Administrator/ChatLieu/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -107,7 +107,7 @@ namespace Shopping.Areas.Administrator.Controllers
         // POST: Administrator/ChatLieu/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Material1 s = db.Material1.Find(id);
             db.Material1.Remove(s);

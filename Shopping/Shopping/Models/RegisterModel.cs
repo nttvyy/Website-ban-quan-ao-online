@@ -37,7 +37,7 @@ namespace Shopping.Models
         public string Email { set; get; }
 
         [Display(Name = "Điện thoại")]
-        public string Phone { set; get; }
+        public int Phone { set; get; }
 
         [Display(Name = "Tỉnh/thành")]
         public string ProvinceID { set; get; }

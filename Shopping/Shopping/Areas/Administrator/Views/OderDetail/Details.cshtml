@@ -1,0 +1,82 @@
+﻿@model Shopping.Models.OrderDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Chi tiết đơn hàng</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_OrderDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_OrderDetail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.User.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Discount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discount)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </dt>
+
+        @*<dd>
+            @Html.DisplayFor(model => model.TotalPrice)
+        </dd>*@
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>*@
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

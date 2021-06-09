@@ -19,8 +19,22 @@ namespace Shopping.Models
         public Nullable<int> ProductID { get; set; }
         public Nullable<int> Quantity { get; set; }
         public Nullable<double> Price { get; set; }
+        public Nullable<int> Discount { get; set; }
+        public Nullable<double> TotalPrice { get; set; }
     
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
+
+        public double Total
+        {
+            get
+            {
+                if (this.Quantity != null && this.Price != null)
+                {
+                    return (double)(this.Quantity * this.Price);
+                }
+                return 0;
+            }
+        }
     }
 }

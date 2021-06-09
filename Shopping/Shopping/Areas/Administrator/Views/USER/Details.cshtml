@@ -1,4 +1,4 @@
-﻿@model WebThoiTrangTreEm.Model.USER
+﻿@model Shopping.Models.User
 
 @{
     ViewBag.Title = "Details";
@@ -11,11 +11,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.UserId)
+            @Html.DisplayNameFor(model => model.UserID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UserId)
+            @Html.DisplayFor(model => model.UserName)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.UserName)
@@ -26,11 +26,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PassWord)
+            @Html.DisplayNameFor(model => model.Password)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PassWord)
+            @Html.DisplayFor(model => model.Password)
         </dd>
 
         <dt>
@@ -42,32 +42,46 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Phone)
+            @Html.DisplayNameFor(model => model.PhoneNumber)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Phone)
+            @Html.DisplayFor(model => model.PhoneNumber)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Avatar)
+            @Html.DisplayNameFor(model => model.Address)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Avatar)
+            @Html.DisplayFor(model => model.Address)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Allowed)
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Province)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Allowed)
+            @Html.DisplayFor(model => model.Province)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.District)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.District)
+        </dd>*@
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.UserId }) |
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.ID_Role }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

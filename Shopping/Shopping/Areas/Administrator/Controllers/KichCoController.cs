@@ -12,7 +12,8 @@ namespace Shopping.Areas.Administrator.Controllers
 {
     public class KichCoController : Controller
     {
-        private QAShopEntities db = new QAShopEntities();
+        private QAShop1Entities1 db = new QAShop1Entities1();
+
 
         // GET: Administrator/ChatLieu
         public ActionResult Index()
@@ -46,7 +47,7 @@ namespace Shopping.Areas.Administrator.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDSize,Name_Size")] Size s)
+        public ActionResult Create([Bind(Include = "IDSize,NameSize")] Size s)
         {
             if (ModelState.IsValid)
             {
@@ -90,9 +91,9 @@ namespace Shopping.Areas.Administrator.Controllers
         }
 
         // GET: Administrator/ChatLieu/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -107,7 +108,7 @@ namespace Shopping.Areas.Administrator.Controllers
         // POST: Administrator/ChatLieu/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Size s = db.Sizes.Find(id);
             db.Sizes.Remove(s);

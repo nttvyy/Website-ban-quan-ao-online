@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
@@ -10,31 +11,51 @@ namespace Shopping.Controllers
 {
     public class LoginController : Controller
     {
-        QAShopEntities db = new QAShopEntities();
-       
+        QAShop1Entities1 db = new QAShop1Entities1();
+
 
         // GET: Login
         public ActionResult Index()
         {
             return View();
         }
+
         [HttpPost]
 
-        public ActionResult Login(User a)
+        public ActionResult Login(LoginModel a)
         {
-            var check = db.Users.Where(s => s.UserID == a.UserID && s.Password == a.Password && s.Email==a.Email).FirstOrDefault();
-            if (check == null)
+            if (ModelState.IsValid)
             {
-                ViewBag.ErrorInfo = "Sai info";
-                return View("Index");
+                //User user = db.Users.SingleOrDefault(x => x.UserName == a.UserName && x.Password == a.Password && a.Role_ID == 3);
+                var dao = new UserDao();
+                var result = dao.Login(a.UserName, GetMD5(a.Password));
+                if (result == 1)
+                {
+                    var user = dao.GetById(a.UserName);
+                    var userSession = new UserLogin();
+                    userSession.UserName = user.UserName;
+                    userSession.UserID = user.UserID;
+                    Session.Add(Quyen.USER_SESSION, userSession);
+                    return RedirectToAction("Index", "Home");
+                }
+                else if (result == 0)
+                {
+                    ModelState.AddModelError("", "Tài khoản không tồn tại.");
+                }
+                else if (result == -1)
+                {
+                    ModelState.AddModelError("", "Tài khoản đang bị khoá.");
+                }
+                else if (result == -2)
+                {
+                    ModelState.AddModelError("", "Mật khẩu không đúng.");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "đăng nhập không đúng.");
+                }
             }
-            else
-            {
-                db.Configuration.ValidateOnSaveEnabled = false;
-                Session["UserID"] = a.UserID;
-                Session["Password"] = a.Password;
-                return RedirectToAction("Index", "Product");
-            }
+            return View(a);
         }
         public ActionResult LogOut()
         {
@@ -46,27 +67,57 @@ namespace Shopping.Controllers
         {
             return View();
         }
+
+        public static string GetMD5(string str)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+
+            byte[] fromData = System.Text.Encoding.ASCII.GetBytes(str);
+            byte[] targetData = md5.ComputeHash(fromData);
+            string byte2String = null;
+
+            for (int i = 0; i < targetData.Length; i++)
+            {
+                byte2String += targetData[i].ToString("x2");
+
+            }
+            return byte2String;
+
+        }
         [HttpPost]
-        public ActionResult RegisterUser(RegisterModel re)
+        public ActionResult Register(RegisterModel re)
         {
             if (ModelState.IsValid)
             {
-                var dao = new User();
-                var check = db.Users.Where(s => s.UserID == dao.UserID).FirstOrDefault();
-                if (check == null)
+                var dao = new UserDao();
+                if (dao.CheckUserName(re.UserName))
                 {
-                    db.Configuration.ValidateOnSaveEnabled = false;
-                    ViewBag.Success = "Đăng ký thành công";
-                    return RedirectToAction("Index");
+                    ModelState.AddModelError("", "Tên đăng nhập đã tồn tại");
+                }
+                else if (dao.CheckEmail(re.Email))
+                {
+                    ModelState.AddModelError("", "Email đã tồn tại");
+                }
+                else
+                {
+                    var user = new User();
+                    user.UserName = re.UserName;
+                    user.ID_Role = 3;
+                    user.Password = GetMD5(re.Password);
+                    user.PhoneNumber = re.Phone;
+                    user.Email = re.Email;
+                    user.Address = re.Address;
+
                     if (!string.IsNullOrEmpty(re.ProvinceID))
                     {
-                        dao.Province = int.Parse(re.ProvinceID);
+                        user.Province = int.Parse(re.ProvinceID);
                     }
                     if (!string.IsNullOrEmpty(re.DistrictID))
                     {
-                        dao.District = int.Parse(re.DistrictID);
+                        user.District = int.Parse(re.DistrictID);
                     }
-                    var result = Insert(dao);
+
+                    var result = dao.Insert(user);
                     if (result > 0)
                     {
                         ViewBag.Success = "Đăng ký thành công";
@@ -77,23 +128,13 @@ namespace Shopping.Controllers
                         ModelState.AddModelError("", "Đăng ký không thành công.");
                     }
                 }
-                else
-                {
-                    ViewBag.ErrorReg = "This is ID exist";
-                    return View();
-                }
             }
             return View();
         }
-        public long Insert(User entity)
-        {
-            db.Users.Add(entity);
-            db.SaveChanges();
-            return entity.UserID;
-        }
+
         public JsonResult LoadProvince()
         {
-            var xmlDoc = XDocument.Load(Server.MapPath(@"~/Content/data/Provinces_Data.xml"));
+            var xmlDoc = XDocument.Load(Server.MapPath(@"/Content/data/Provinces_Data.xml"));
 
             var xElements = xmlDoc.Element("Root").Elements("Item").Where(x => x.Attribute("type").Value == "province");
             var list = new List<ProvinceModel>();
@@ -114,7 +155,7 @@ namespace Shopping.Controllers
         }
         public JsonResult LoadDistrict(int provinceID)
         {
-            var xmlDoc = XDocument.Load(Server.MapPath(@"~/Content/data/Provinces_Data.xml"));
+            var xmlDoc = XDocument.Load(Server.MapPath(@"/Content/data/Provinces_Data.xml"));
 
             var xElement = xmlDoc.Element("Root").Elements("Item")
                 .Single(x => x.Attribute("type").Value == "province" && int.Parse(x.Attribute("id").Value) == provinceID);
