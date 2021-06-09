@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Shopping.Models;
 
 namespace Shopping.Controllers
 {
     public class HomeController : Controller
     {
+        QAShop1Entities1 db = new QAShop1Entities1();
+        // GET: Home
         public ActionResult Index()
         {
+            ViewBag.SanPhamMoi = db.Products.OrderByDescending(x => x.CreatedDate).Take(8).ToList();
+            ViewBag.CoTheBanThich = db.Products.Where(m => m.CategoryID == 3).ToList();
+            ViewBag.SanPhamBC = db.Products.OrderBy(x => x.TotalQuantity).Take(8).ToList();
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult SanPhamMoi()
         {
-            ViewBag.Message = "Your application description page.";
-
+            ViewBag.TrangSanPhamMoi = db.Products.OrderByDescending(x => x.CreatedDate).Take(10000).ToList();
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

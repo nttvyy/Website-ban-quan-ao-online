@@ -1,0 +1,56 @@
+﻿@model Shopping.Models.RegisterModel
+@{
+    ViewBag.Title = "đãlogin";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+@using (Html.BeginForm("CheckOut", "Cart", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="control-group">
+        @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+        <div class="controls">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="controls">
+            @Html.TextAreaFor(model => model.Address, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="control-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="controls">
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="control-group">
+        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="controls">
+            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.LabelFor(model => model.ProvinceID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="controls">
+            @Html.DropDownList("ProvinceID", new SelectList(new string[] { }), new { @class = "form-control", @id = "ddlProvince" })
+            @Html.ValidationMessageFor(model => model.ProvinceID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="control-group">
+        @Html.LabelFor(model => model.DistrictID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="controls">
+            @Html.DropDownList("DistrictID", new SelectList(new string[] { }), new { @class = "form-control", @id = "ddlDistrict" })
+            @Html.ValidationMessageFor(model => model.DistrictID, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+}
+

@@ -1,0 +1,14 @@
+﻿@using Shopping.Models;
+@model List<ProductCategory>
+
+<ul>
+    @{
+        foreach (var item in Model)
+        {
+            <li>
+                @Html.ActionLink(item.NameCategory, "Product", "Product", new { category = item.NameCategory.Trim() }, "")
+            </li>
+        }
+    }
+</ul>
+

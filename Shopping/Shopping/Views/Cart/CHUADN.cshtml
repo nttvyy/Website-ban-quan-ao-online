@@ -1,0 +1,47 @@
+﻿@model Shopping.Models.OrderDetail
+@{
+    ViewBag.Title = "CHUADN";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+<div>
+    @using (Html.BeginForm("CHUADN", "Cart", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <section class="header_text sub">
+            <h4 style="color: #fd4004;margin-bottom:-50px;"><span>Thông tin giao hàng</span></h4>
+        </section>
+        <div class="box-border" style="margin-left:42%;">
+            <ul>
+                <li class="row">
+                    <div class="control-group">
+                        <label for="Name" class="required">Tên</label>
+                        <input type="text" name="shipname" />
+                    </div>
+
+                    <div class="control-group">
+                        <label for="Address" class="required">Địa chỉ khách hàng</label>
+                        <input type="text" name="DiaChiKhachHang" />
+                    </div>
+
+                    <div class="control-group">
+                        <label for="" class="required">Điện thoại</label>
+                        <input type="number" name="shiphone" />
+                    </div>
+
+                    <div class="control-group">
+                        <label for="" class="required">Email</label>
+                        <input type="email" name="shipmail" />
+                    </div>
+                    <div class="cart_navigation">
+                        <input type="submit" value="Thanh toán" class="btn btn-inverse large" />
+                        @*<a href="~/Login/Index" class=" btn btn-success"> Đăng nhập</a>*@
+                        @*<a class="continue-btn" href="/"><i class="fa fa-arrow-left"></i>&nbsp;Tiếp tục mua hàng</a>*@
+
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    }
+</div>
+

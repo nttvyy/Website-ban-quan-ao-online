@@ -1,0 +1,160 @@
+﻿@model Shopping.Content.GioHang
+@using Shopping.Models
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+    List<Product> listTrangSanPhamMoi = ViewBag.SanPhamMoi;
+    List<Product> listCoTheBanThich = ViewBag.CoTheBanThich;
+}
+<section class="header_text sub">
+    <h4 style="color: #fd4004;"><span>GIỎ HÀNG</span></h4>
+</section>
+<section class="main-content">
+    <div class="row">
+        <div class="span9">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Mã SP</th>
+                        <th>Tên SP</th>
+                        <th>Ảnh SP</th>
+                        <th>Đơn giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var pro in Model.Items)
+                    {
+                        decimal total = pro.SoLuong * (decimal)pro.sp.Price.Value;
+                        <tr>
+                            <td>@Html.DisplayFor(model => pro.sp.ProductID)</td>
+                            <td>@Html.DisplayFor(model => pro.sp.ProductName)</td>
+                            <td><img src=" @Url.Content(pro.sp.Image)" height="50" width="50" /></td>
+                            <td>@Html.DisplayFor(model => pro.sp.Price),000 VNĐ</td>
+                            <td>
+                                @using (Html.BeginForm("Update_Cart_Qua", "Cart"))
+                                {
+                                    <input type="hidden" value="@pro.sp.ProductID" name="IDPro" />
+                                    <input type="number" value="@pro.SoLuong" name="QualityPro" />
+                                    <input type="submit" value="Update" />
+                                }
+                            </td>
+                            <td>@total,000 VNĐ</td>
+                            <td>
+                                <a href="/Cart/Remove/@pro.sp.ProductID/">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <hr>
+            <p class="cart-total right">
+                <strong>Tổng cộng</strong>: @Model.TongTien(),000 VNĐ<br>
+            </p>
+            <hr />
+            @*<p><strong><a style="font-size:15px;" href="@Url.Action("Index", "Home")">Tiếp tục mua hàng</a></strong></p>*@
+            <hr />
+
+            <center>
+                <p><strong><a style="font-size:15px;" href="@Url.Action("Index", "Home")">Tiếp tục mua hàng</a></strong></p>
+                <button style="background-color: #FF6A00;border:#FF6A00;">
+                    <a href="~/Cart/CheckOut/" class="btn btn-default" style="color:#ffffff; border:#FF6A00;background-color:#FF6A00; border-radius:5px 10px 5px 10px;"><center>ĐẶT HÀNG</center></a>
+
+                </button>
+            </center>
+           
+                @*<form asp-action="CheckOut" asp-controller="Cart" method="post">
+                    <h4 class="checkout-sep">THÔNG TIN GIAO HÀNG</h4>
+                    <div class="box-border">
+                        <ul>
+                            <li class="row">-->*@
+                                @*<div class="col-sm-6">
+                                    <label for="Name" class="required">Tên</label>
+                                    <input type="text" name="shipname" />
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="Address" class="required">Địa chỉ khách hàng</label>
+                                    <input type="text" name="DiaChiKhachHang" />
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="" class="required">Điện thoại</label>
+                                    <input type="number" name="shiphone" />
+                                </div>*@
+
+
+                                <!--@if (User.Identity.IsAuthenticated)
+                                {
+
+                                    <a href="~/Cart/CustomerForm" class=" btn btn-success"> Thông tin khách hàng</a>
+                                }
+                                else
+                                {
+                                    <div class="col-sm-6">
+                                        <label for="Name" class="required">Tên</label>
+                                        <input type="text" name="shipname" />
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label for="Address" class="required">Địa chỉ khách hàng</label>
+                                        <input type="text" name="DiaChiKhachHang" />
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label for="" class="required">Điện thoại</label>
+                                        <input type="number" name="shiphone" />
+                                    </div>
+
+                                }
+                                <div class="cart_navigation">
+                                    <input type="submit" value="CheckOut " class=" btn btn-success" />
+                                    <a href="~/Login/Index" class=" btn btn-success"> Đăng nhập</a>-->
+                                    @*<a class="continue-btn" href="/"><i class="fa fa-arrow-left"></i>&nbsp;Tiếp tục mua hàng</a>*@
+
+                                <!--</div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </form>
+            }-->
+
+
+
+        </div>
+        
+        <div class="span3 col">
+            <div class="block">
+                <h4 class="title"><strong>Có thể</strong> Bạn thích</h4>
+                @foreach (var item in listCoTheBanThich)
+                {
+                    <ul class="small-product">
+                        <li>
+                            <a href="@Url.Action("ProductDetail", "ProductDetail", new { id = item.ProductID })" title="">
+                                <img src="@Url.Content(item.Image)" alt="">
+                            </a>
+                            <a href="@Url.Action("ProductDetail", "ProductDetail", new { id = item.ProductID })">@item.ProductName</a>
+                        </li>
+                    </ul>
+                }
+            </div>
+            <div class="block">
+                <h4 class="title"><strong>Sản phẩm </strong>mới nhất</h4>
+                @foreach (var item in listTrangSanPhamMoi)
+                {
+                    <ul class="small-product">
+                        <li>
+                            <a href="@Url.Action("ProductDetail", "ProductDetail", new { id = item.ProductID })" title="">
+                                <img src="@Url.Content(item.Image)" alt="">
+                            </a>
+                            <a href="@Url.Action("ProductDetail", "ProductDetail", new { id = item.ProductID })">@item.ProductName</a>
+                        </li>
+                    </ul>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
