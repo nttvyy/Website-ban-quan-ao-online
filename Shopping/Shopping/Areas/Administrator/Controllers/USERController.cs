@@ -21,8 +21,8 @@ namespace Shopping.Areas.Administrator.Controllers
 
         public ActionResult Index()
         {
-            var us = db.Users.Include(s => s.Role);
-            return View(db.Users.ToList());
+            //var us = db.Users.Where(m => m.ID_Role == 1 && m.ID_Role == 2).SingleOrDefaultAsync(); ;
+            return View(db.Users.ToList().Where(m => m.ID_Role ==2) );
         }
 
         // GET: Administrator/USER/Details/5
