@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Shopping.Models.Size>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2> Danh sách kích cỡ</h2>
+
+<p>
+    @Html.ActionLink(" Thêm mới", "Create")
+</p>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            Mã kích cỡ
+        </th>
+        <th>
+            Tên kích cỡ
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameSize)
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.IDSize }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.IDSize }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.IDSize })
+            </td>
+        </tr>
+    }
+
+</table>

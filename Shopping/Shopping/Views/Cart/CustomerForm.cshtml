@@ -1,0 +1,120 @@
+﻿@model Shopping.Models.User
+@{
+    ViewBag.Title = "CustomerForm";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<div>
+    @using (Html.BeginForm("CheckOut", "Cart"))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Thông tin mua hàng</h4>
+
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+        <div class="box-border">
+            <ul>
+                <li class="row">
+                    @*<div class="col-sm-6">
+                        <label for="Name" class="required">Tên</label>
+                        <input type="text" name="shipname" />
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="Address" class="required">Địa chỉ khách hàng</label>
+                        <input type="text" name="DiaChiKhachHang" />
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="" class="required">Điện thoại</label>
+                        <input type="number" name="shiphone" />
+                    </div>*@
+
+                    <div class="col-sm-6">
+                        <label for="Name" class="required">Tên</label>
+                        <input type="text" name="shipname" />
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="Address" class="required">Địa chỉ khách hàng</label>
+                        <input type="text" name="DiaChiKhachHang" />
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="" class="required">Điện thoại</label>
+                        <input type="number" name="shiphone" />
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="" class="required">Email</label>
+                        <input type="number" name="shipmail" />
+                    </div>
+                </li>
+                </ul>
+            </div>
+
+
+                <div class="control-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Đặt hàng" class="btn btn-inverse large" />
+                    </div>
+                </div>
+        </div>
+        }
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="span5">
+        <form action="#" method="post">
+            <input type="hidden" name="next" value="/">
+            <fieldset>
+                <div class="control-group">
+                    <label class="control-label">Người nhận</label>
+                    <div class="controls">
+                        <input type="text" placeholder="" id="username" class="input-xlarge">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Địa chỉ email</label>
+                    <div class="controls">
+                        <input type="text" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Số điện thoại </label>
+                    <div class="controls">
+                        <input type="number" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Địa chỉ </label>
+                    <div class="controls">
+                        <input type="text" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <input tabindex="3" class="btn btn-inverse large" type="submit" value="Gửi đơn hàng">
+                </div>
+            </fieldset>
+        </form>
+    </div>*@
+

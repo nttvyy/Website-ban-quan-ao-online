@@ -1,0 +1,44 @@
+﻿@model Shopping.Models.LoginModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+<section class="header_text sub">
+    <h4 style="color: #fd4004;margin-bottom:-50px;"><span>Đăng nhập</span></h4>
+</section>
+<section class="main-content">
+    <div class="row">
+        <div class="span5" style="margin-left:42%;">
+            <div class="login-panel panel panel-default">
+                <div class="panel-body">
+                    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                    {
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" });
+                        <fieldset>
+                            <div class="control-group">
+                                <label>Email </label>
+                                @Html.TextBoxFor(model => model.Email, new { @class = "controls", @autofocus = "autofocus" })
+                            </div>
+                            <div class="control-group">
+                                <label>Tên đăng nhập</label>
+                                @Html.TextBoxFor(model => model.UserName, new { @class = "controls", @autofocus = "autofocus" })
+                            </div>
+                            <div class="control-group">
+                                <label>Mật khẩu</label>
+                                @Html.PasswordFor(model => model.Password, new { @class = "controls" })
+                            </div>
+                            <div style="margin-bottom:10px;"> 
+                                <strong>
+                                    Bạn chưa có tài khoản?
+                                    @Html.ActionLink("Đăng ký", "Register")
+                                </strong>
+                            </div>
+                            <!-- Change this to a button or input when using this as a form -->
+                            <button type="submit" class="btn btn-inverse large">Đăng nhập vào tài khoản</button>
+                        </fieldset>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

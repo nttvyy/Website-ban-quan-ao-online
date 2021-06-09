@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Shopping.Models.Product>
+@{
+    ViewBag.Title = "SearchName";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<section class="header_text sub">
+    <h4 style="color: #fd4004;"><span>TÌM KIẾM SẢN PHẨM</span></h4>
+</section>
+@if (Model.Count() == 0)
+{
+    <h6 style="text-align:center;"> Không tìm thấy sản phẩm mà bạn tìm kiếm TT.TT</h6>
+}
+else
+{
+    <h5 style="margin-left:20px;margin-bottom:20px;">Đây là những sản phẩm bạn muốn tìm:</h5>
+        <div id="myCarousel" class="myCarousel carousel slide">
+            <div class="carousel-inner">
+                <div class="active item">
+                    @foreach (var item in Model)
+                    {
+                    <ul class="thumbnails">
+                        <li class="span3">
+                            <div class="product-box">
+                                <span class="sale_tag"></span>
+                                <a style="font-size:15px;" href="@Url.Action("ProductDetail", "ProductDetail", new { id = item.ProductID })">
+                                    <img title=" " alt=" " src="@Url.Content(item.Image)" />
+                                </a>
+                                <a href="@Url.Action("ProductDetail", "ProductDetail")" class="title"><strong>@item.ProductName</strong></a><br />
+                                <p class="price">@item.Price,000 VNĐ</p>
+                            </div>
+                        </li>
+                    </ul>
+                    }
+                </div>
+            </div>
+        </div>
+    
+}
+
+

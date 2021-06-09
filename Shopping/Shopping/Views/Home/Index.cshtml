@@ -1,0 +1,140 @@
+﻿@using Shopping.Models;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+    List<Product> listTrangSanPhamMoi = ViewBag.SanPhamMoi;
+    List<Product> listCoTheBanThich = ViewBag.CoTheBanThich;
+    List<Product> listSPBC = ViewBag.SanPhamBC;
+}
+<section class="main-content">
+    <div class="row">
+        <div class="span12">
+            <div class="row">
+                <div class="span12">
+                    <h4 class="title">
+                        <span class="pull-left"><span class="text"><span class="line">SẢN PHẨM <strong>MỚI NHẤT</strong></span></span></span>
+                    </h4>
+                    <div style="padding-top:50px;" id="myCarousel" class="myCarousel carousel slide">
+                        <div class="carousel-inner">
+                            <div class="active item">
+                                @foreach (var item in listTrangSanPhamMoi)
+                                {
+                                    <ul class="thumbnails">
+                                        <li class="span3">
+                                            <div class="product-box">
+                                                <span class="sale_tag"></span>
+                                                <a style="font-size:15px;" href="@Url.Action("ProductDetail", "ProductDetail", new { id = item.ProductID })">
+                                                    <img title=" " alt=" " src="@Url.Content(item.Image)" />
+                                                </a>
+                                                <a href="@Url.Action("ProductDetail","ProductDetail")" class="title"><strong>@item.ProductName</strong></a><br />
+
+                                                <p class="price">@item.Price,000 VNĐ</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="span12">
+                    <h4 class="title">
+                        <span class="pull-left"><span class="text"><span class="line">SẢN PHẨM <strong>BÁN CHẠY</strong></span></span></span>
+                    </h4>
+                    <div style="padding-top:50px;" id="myCarousel" class="myCarousel carousel slide">
+                        <div class="carousel-inner">
+                            <div class="active item">
+                                @foreach (var item in listSPBC)
+                                {
+                                    <ul class="thumbnails">
+                                        <li class="span3">
+                                            <div class="product-box">
+                                                <span class="sale_tag"></span>
+                                                <a style="font-size:15px;" href="@Url.Action("ProductDetail", "ProductDetail", new { id = item.ProductID })">
+                                                    <img title=" " alt=" " src="@Url.Content(item.Image)" />
+                                                </a>
+                                                <a href="@Url.Action("ProductDetail","ProductDetail")" class="title"><strong>@item.ProductName</strong></a><br />
+
+                                                <p class="price">@item.Price,000 VNĐ</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="span12">
+                    <div class="row">
+                        <div class="span12">
+                            <h4 class="title">
+                                <span class="pull-left"><span class="text"><span class="line">CÓ THỂ <strong>BẠN THÍCH</strong></span></span></span>
+                            </h4>
+                            <div style="padding-top:50px;" id="myCarousel" class="myCarousel carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="active item">
+                                        @foreach (var item in listCoTheBanThich)
+                                        {
+                                            <ul class="thumbnails">
+                                                <li class="span3">
+                                                    <div class="product-box">
+                                                        <span class="sale_tag"></span>
+                                                        <a style="font-size:15px;" href="@Url.Action("ProductDetail", "ProductDetail", new { id = item.ProductID })">
+                                                            <img title=" " alt=" " src="@Url.Content(item.Image)" />
+                                                        </a>
+                                                        <a href="@Url.Action("ProductDetail","ProductDetail")" class="title"><strong>@item.ProductName</strong></a><br />
+                                                        @*<a class="category">@item.ProductCategory</a><br />*@
+                                                        <p class="price">@item.Price,000 VNĐ</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row feature_box">
+                <div class="span4">
+                    <div class="service">
+                        <div class="responsive">
+                            <img src="~/Content/themes/images/feature_img_1.png" alt="" />
+                            <h4><strong>THIẾT KẾ SANG TRỌNG</strong></h4>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="service">
+                        <div class="customize">
+                            <img src="~/Content/themes/images/feature_img_2.png" alt="" />
+                            <h4><strong>MIỄN PHÍ VẬN CHUYỂN</strong></h4>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="service">
+                        <div class="support">
+                            <img src="~/Content/themes/images/feature_img_3.png" alt="" />
+                            <h4><strong>HỖ TRỢ 24/7</strong></h4>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

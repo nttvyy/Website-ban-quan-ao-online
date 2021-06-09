@@ -1,0 +1,32 @@
+﻿@model Shopping.Content.GioHang
+@{
+    ViewBag.Title = "Showcart";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+<section class="header_text sub">
+    <h4 style="color: #fd4004;"><span>GIỎ HÀNG</span></h4>
+</section>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã SP</th>
+            <th>Tên SP</th>
+            <th>Ảnh SP</th>
+            <th>Đơn giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="6">
+                Chưa có sản phẩm nào....
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<a style="font-size:15px;" href="@Url.Action("Index", "Home")">Tiếp tục mua hàng</a>
+

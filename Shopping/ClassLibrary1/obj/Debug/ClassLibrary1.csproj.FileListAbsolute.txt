@@ -1,0 +1,11 @@
+C:\Users\huynh\OneDrive\Documents\GitHub\Website-ban-quan-ao-online\Shopping\ClassLibrary1\bin\Debug\ClassLibrary1.dll.config
+C:\Users\huynh\OneDrive\Documents\GitHub\Website-ban-quan-ao-online\Shopping\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\huynh\OneDrive\Documents\GitHub\Website-ban-quan-ao-online\Shopping\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\huynh\OneDrive\Documents\GitHub\Website-ban-quan-ao-online\Shopping\ClassLibrary1\bin\Debug\EntityFramework.dll
+C:\Users\huynh\OneDrive\Documents\GitHub\Website-ban-quan-ao-online\Shopping\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\huynh\OneDrive\Documents\GitHub\Website-ban-quan-ao-online\Shopping\ClassLibrary1\bin\Debug\EntityFramework.xml
+C:\Users\huynh\OneDrive\Documents\GitHub\Website-ban-quan-ao-online\Shopping\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\huynh\OneDrive\Documents\GitHub\Website-ban-quan-ao-online\Shopping\ClassLibrary1\obj\Debug\ClassLibrary1.csproj.CoreCompileInputs.cache
+C:\Users\huynh\OneDrive\Documents\GitHub\Website-ban-quan-ao-online\Shopping\ClassLibrary1\obj\Debug\ClassLibrary1.csproj.CopyComplete
+C:\Users\huynh\OneDrive\Documents\GitHub\Website-ban-quan-ao-online\Shopping\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\huynh\OneDrive\Documents\GitHub\Website-ban-quan-ao-online\Shopping\ClassLibrary1\obj\Debug\ClassLibrary1.pdb

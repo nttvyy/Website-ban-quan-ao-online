@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    @RenderSection("head", required: false)
+    <meta charset="utf-8">
+    <title>Shopping Online</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!-- bootstrap -->
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <link href="~/Content/themes/css/bootstrappage.css" rel="stylesheet" />
+
+    <!-- global styles -->
+    <link href="~/Content/themes/css/flexslider.css" rel="stylesheet" />
+    <link href="~/Content/themes/css/main.css" rel="stylesheet" />
+
+    <!-- scripts -->
+    <script src="https://kit.fontawesome.com/2296303e2e.js" crossorigin="anonymous"></script>
+    <script src="~/Content/themes/js/jquery-1.7.2.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/themes/js/superfish.js"></script>
+    <script src="~/Content/themes/js/jquery.scrolltotop.js"></script>
+    <script src="~/Scripts/Province.js"></script>
+</head>
+<body>
+     
+    <div id="top-bar" class="container">
+        <div class="row">
+            <div class="span4" >
+                <form action="/Product/SearchName" method="post" class="search_form"  >
+                    @*<input type="text" class="input-block-level search-query" Placeholder="Nhập nội dung tìm kiếm">*@
+                    <a >@Html.TextBox("searchString")</a>
+                    <input style="color: white;font-size:15px;color:#fd4004;width:20%;height:35px;margin-bottom:5px;" type="submit" value="Tìm kiếm">
+                </form>
+            </div>
+            <div class="span8">
+                <div class="account pull-right">
+                    <ul class="user-menu">
+                        <li><a href="~/Cart/Cart"><i style="font-size:25px;" class="fas fa-shopping-cart"></i> </a></li>
+                        @if (Session["UserName"] == null)
+                        {
+                            <li>@Html.ActionLink("Đăng nhập", "Index", "Login")</li>
+                            <li>@Html.ActionLink("Đăng ký", "Register", "Login")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Đăng xuất","Logout","Login")</li>
+                            <li style="color:#fd4004"><strong>Chào,@Session["UserName"]</strong></li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="wrapper" class="container">
+        <section class="navbar main-menu">
+            <div class="navbar-inner main-menu">
+                <a href="~/Home/Index" class="logo pull-left"><img src="~/Content/themes/images/logo.png" class="site_logo" alt=""></a>
+                <nav id="menu" class="pull-right">
+                    <ul>
+                        <li>@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Giới thiệu", "AboutUs", "AboutUs")</li>
+                        <li>@Html.ActionLink("Tin tức", "News", "News")</li>
+                        <li>
+                            <a href="~/Product/Product">Sản phẩm</a>
+
+                            @{Html.RenderAction("CategoryPartial", "Category");}
+
+
+                        </li>
+                        <li>@Html.ActionLink("Liên hệ", "Contact", "Contact")</li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <section class="homepage-slider" id="home-slider">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                        <img src="~/Content/themes/images/carousel/banner-2.jpg" alt="" />
+                        <div class="intro">
+                            <h1>Giảm giá cuối năm</h1>
+                            <p><span>Lên đến 50%</span></p>
+                            <p><span>Cho tất cả sản phẩm online và ở cửa hàng</span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="~/Content/themes/images/carousel/bg5.jpg" alt="" />
+                    </li>
+                    <li>
+                        <img src="~/Content/themes/images/carousel/bg1.jpg" />
+                    </li>
+                    <li>
+                        <img src="~/Content/themes/images/carousel/bg2.jpg" />
+                    </li>
+                    <li>
+                        <img src="~/Content/themes/images/carousel/bg3.jpg" />
+                    </li>
+                    <li>
+                        <img src="~/Content/themes/images/carousel/bg4.jpg" />
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        @RenderBody()
+
+        <section id="footer-bar">
+            <div class="row">
+                <div class="span3">
+                    <h4>Mục lục</h4>
+                    <ul class="nav">
+                        <li>@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Giới thiệu", "AboutUs", "AboutUs")</li>
+                        <li>@Html.ActionLink("Tin tức", "News", "News")</li>
+                        <li>@Html.ActionLink("Đăng nhập", "Index", "Login")</li>
+                        <li>@Html.ActionLink("Đăng ký", "Register", "Login")</li>
+                    </ul>
+                </div>
+                <div class="span4">
+                    <h4>Sản phẩm</h4>
+                    <ul class="nav" style="text-decoration:none;">
+                        @{Html.RenderAction("CategoryPartial", "Category");}
+                    </ul>
+                </div>
+                <div class="span5">
+                    <p class="logo"><img src="~/Content/themes/images/logo.png" class="site_logo" alt=""></p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
+                </div>
+            </div>
+        </section>
+        <section id="copyright">
+            <span>828 Sư Vạn Hạnh, Phường 13, Quận 10, TP HCM - Hotline: 0123456789</span>
+        </section>
+    </div>
+    <script src="~/Content/themes/js/common.js"></script>
+    <script src="~/Content/themes/js/jquery.flexslider-min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(document).ready(function () {
+                $('.flexslider').flexslider({
+                    animation: "fade",
+                    slideshowSpeed: 4000,
+                    animationSpeed: 600,
+                    controlNav: false,
+                    directionNav: true,
+                    controlsContainer: ".flex-container" // the container that holds the flexslider
+                });
+            });
+        });
+    </script>
+</body>
+</html>
